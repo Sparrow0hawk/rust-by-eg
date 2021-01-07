@@ -25,7 +25,15 @@ struct Colour {
 
 impl Display for Colour {
     fn fmt(&self, f: &mut Formatter) -> fmt::Result {
-        write!(f, "RGB ( {}, {}, {} ) 0x{:X}{:X}{:X}", self.red, self.green, self.blue, self.red, self.green, self.blue)
+        write!(f, "RGB ( {}, {}, {} ) 0x{}{}{}", self.red, self.green, self.blue, 
+        // `{:01#X}` specifies:
+        // use 1 `0` character to pad width
+        // $ specifies we'll set width as an extra arg (2)
+        // X specifies upperHex
+        format!("{:01$X}", self.red, 2),
+        format!("{:01$X}", self.green, 2),
+        format!("{:01$X}", self.blue, 2)
+    )
     }
 }
 
