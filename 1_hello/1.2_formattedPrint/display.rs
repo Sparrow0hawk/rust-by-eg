@@ -10,7 +10,7 @@ impl fmt::Display for TipTop {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         // write the first element to output stream f
         // returns a result which determines success or failure
-        write!(f, "{}", self.0)
+        write!(f, "({}, {})", self.0, self.1)
     }
 }
 
