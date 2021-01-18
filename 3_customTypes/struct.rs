@@ -3,6 +3,13 @@
 // a classic C struct
 // a unit struct, fieldless
 
+fn rect_area(rect: Rectangle) -> f32 {
+    let wid: f32 = rect.bottom_right.x - rect.top_left.x;
+    let len: f32 = rect.bottom_right.y - rect.top_left.y;
+
+    wid * len
+}
+
 #[derive(Debug)]
 struct Person {
     name: String,
@@ -60,4 +67,9 @@ fn main() {
     let Pair(integer, decimal) = pair;
 
     println!("Pair contains {:?} and {:?}", integer, decimal);
+
+    let my_rect = Rectangle{top_left: Point { x: 0.0, y: 0.0},
+                            bottom_right: Point { x: 4.0, y: 3.0 } };
+
+    println!("The area of my rectangle is: {}", rect_area(my_rect));
 }
